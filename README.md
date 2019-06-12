@@ -1,3 +1,6 @@
+[TOC]
+
+
 # Azure IoT C SDK Compilation on VAR-SOM-MX7 : NXP/Freescale iMX7
 
 ## Microsoft Azure IoT Device SDK for C
@@ -774,5 +777,4 @@ RequireValidShell              off
 ```
 # # adduser proftpd -shell /bin/false -ingroup proftpd -home /ftpshare
 ```
-[TOC]
 
