@@ -612,6 +612,9 @@ Regarding Userspace access, sample code
 
 Here in sample code instead of "/dev/mydevice" use /dev/ttymxc1 or /dev/ttymxc2 device. 
 
+# VAR SPI
+[http://variwiki.com/index.php?title=DART-6UL_SPI#SPI_2](http://variwiki.com/index.php?title=DART-6UL_SPI#SPI_2) contains SPI2 example for your reference. 
+If you have specific pins, please provide detailed pin you intent to be used for SPI2 port. 
  
 # How to delete files only, but keep the directory structure?
 ```
