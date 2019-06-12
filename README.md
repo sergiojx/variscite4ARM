@@ -629,8 +629,69 @@ sergio@ubuntu:~/var_som_mx7_debian$ sudo cp -avr rootfs_ORG rootfs
 #### [Background](https://mkrak.org/2017/11/18/updating-embedded-linux-devices-part-0/)
 #### [Update strategies](https://mkrak.org/2018/01/10/updating-embedded-linux-devices-part1/)
 #### [SWUpdate](https://mkrak.org/2018/01/26/updating-embedded-linux-devices-part2/)
+We support SWUpdate with double copy and the partition creation. 
+See [variwiki](http://variwiki.com/index.php?title=SWUpdate_Guide&release=RELEASE_SUMO_V1.1_VAR-SOM-MX7) the [script](https://github.com/varigit/meta-variscite-fslc/blob/sumo/scripts/var_mk_yocto_sdcard/variscite_scripts/mx6ul_mx7_install_yocto.sh#L174)
+I would advise to use SWUpdate from Yocto sumo, and see if it works for you.
+##  update the whole filesystem via network
+#### .[VAR-SOM-MX7 - Yocto Setup TFTP/NFS](http://variwiki.com/index.php?title=Yocto_Setup_TFTP/NFS&release=RELEASE_SUMO_V1.1_VAR-SOM-MX7)
+```
+With one change as below, 
 
 
+Use below commands for debian rootfs,
+
+Running Yocto rootfs on Variscite board using TFTP & NFS
+1.1 Host
+Make sure you installed NFS server:
+
+$ sudo apt-get install nfs-kernel-server
+$ cd ~/var_som_mx7_debian
+$ sudo mkdir rootfs_nfs
+$ cd rootfs_nfs
+$ sudo tar xvf  ../output/rootfs.tar.gz
+$ sudo gedit /etc/exports
+Add the following line (change <uname> to the name of user):
+
+/home/<uname>/var_som_mx7_debian/rootfs_nfs    *(rw,sync,no_root_squash,no_all_squash,no_subtree_check) 
+exit & save
+
+$ sudo /etc/init.d/nfs-kernel-server restart
+Make sure you installed TFTP server:
+
+$ sudo apt-get install xinetd tftpd tftp
+Verify:
+$ ls /usr/sbin/in.tftpd
+$ sudo gedit /etc/xinetd.d/tftp
+service tftp
+{
+protocol = udp
+port = 69
+socket_type = dgram
+wait = yes
+user = nobody
+server = /usr/sbin/in.tftpd
+server_args = /tftpboot
+disable = no
+}
+$ sudo mkdir /tftpboot
+$ sudo chmod -R 777 /tftpboot
+$ sudo /etc/init.d/xinetd restart
+$ cd ~/var-fslc-yocto/build_x11/
+$ cp tmp/deploy/images/imx7-var-som/zImage /tftpboot
+$ cp tmp/deploy/images/imx7-var-som/zImage-imx*.dtb /tftpboot
+$ sudo rename 's/zImage-//' /tftpboot/zImage-*.dtb
+
+
+1.2 Target
+Make sure you have a serial connection to the target.
+
+Reset and hold the space bar. This will bring you to U-Boot command line.
+
+$ setenv serverip 192.168.1.188
+$ setenv nfsroot /home/<uname>/rootfs_nfs (change <uname> to the name of user)
+$ setenv bootcmd run netboot
+$ saveenv 
+```
 # proftpd
 ## /etc/hosts
 ```
