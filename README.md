@@ -578,6 +578,9 @@ echo 103 > /sys/class/gpio/unexport
 19 MX7D_PAD_LCD_DATA23__GPIO3_IO28		0x79	J3 10   -> 92
 
 ```
+# FreeRTOS support
+Instruction about FreeRTOS support here:
+[http://variwiki.com/index.php?title=VAR-SOM-MX7_FreeRTOS_for_M4](http://variwiki.com/index.php?title=VAR-SOM-MX7_FreeRTOS_for_M4)
 
 
 # VAR UARTs
