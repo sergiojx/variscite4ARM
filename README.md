@@ -595,11 +595,11 @@ Variscite Bluetooth setup service via below command.
 ```
 UART mapping for IMX7 is as per below
 
-UART1 - /dev/ttymxc0 - Used as serial console
-UART2 - /dev/ttymxc1 - Available and configured
+UART1 - /dev/ttymxc0 - Used as serial console  
+UART2 - /dev/ttymxc1 - Available and configured  
 [https://github.com/varigit/linux-imx/blob/imx_4.9.88_2.0.0_ga-var01/arch/arm/boot/dts/imx7d-var-som.dtsi#L933](https://github.com/varigit/linux-imx/blob/imx_4.9.88_2.0.0_ga-var01/arch/arm/boot/dts/imx7d-var-som.dtsi#L933)
 
-UART3 - /dev/ttymxc2 - Reserved for Bluetooth purpose 
+UART3 - /dev/ttymxc2 - Reserved for Bluetooth purpose   
 [https://github.com/varigit/debian-var/blob/debian_stretch_mx7_var02/variscite/variscite-bluetooth#L9](https://github.com/varigit/debian-var/blob/debian_stretch_mx7_var02/variscite/variscite-bluetooth#L9)
 
 Can be available on J13 if you disable Bluetooth service 
