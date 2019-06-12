@@ -536,6 +536,8 @@ sergio@ubuntu:~/usr_lib.DEVX/usr/include/arm-linux-gnueabihf/openssl$ cp  openss
 ```
 
 # VAR GPIO
+
+[http://variwiki.com/index.php?title=VAR-SOM-MX7_GPIO](http://variwiki.com/index.php?title=VAR-SOM-MX7_GPIO)
 ```
 GPIO3_IO[5] = (3-1)*32+5 = 69
 
