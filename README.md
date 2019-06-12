@@ -627,6 +627,10 @@ sergio@ubuntu:~/var_som_mx7_debian/rootfs$ sudo cp -avr . ../rootfsCopy/
 ```
 Where . is new firmware directory and ../rootfsCopy/ is unit /
 
+# Main daemon execution
+add your application in the /etc/rc.local. 
+[https://www.itechlounge.net/2017/10/linux-how-to-add-rc-local-in-debian-9/](https://www.itechlounge.net/2017/10/linux-how-to-add-rc-local-in-debian-9/)
+
 # Copying base line filesys
 ```
 sergio@ubuntu:~/var_som_mx7_debian$ sudo cp -avr rootfs_ORG rootfs
